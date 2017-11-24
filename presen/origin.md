@@ -1,4 +1,4 @@
-# ディジタル万歩計 DIgital Pedometer
+# ディジタル万歩計 Digital Pedometer
 ## 構想と経過報告
 
 ---
