@@ -35,7 +35,7 @@ for i = 1 : dataSize
 	data(i) = data_1d(i) - ave;
 endfor
 
-save -text data_1d.tsv data_1d;
+%save -text data_1d.tsv data_1d;
 
 
 t = linspace( 0, 100, length(data_1d) );
@@ -60,7 +60,7 @@ endfor
 t = linspace( 0, 100, length( lpf ) );
 
 
-save -text data_1d_lpf.tsv lpf;
+%save -text data_1d_lpf.tsv lpf;
 plot( t, lpf );
 
 print -depsc data_1d_lpf.eps;
