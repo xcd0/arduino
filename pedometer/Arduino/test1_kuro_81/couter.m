@@ -66,10 +66,6 @@ plot( t, lpf );
 print -depsc data_1d_lpf.eps;
 lpf_fft = abs( fft( lpf ) );
 
-
-
-lpf_fft = abs( fft( lpf ) );
-
 ampMax = max( lpf_fft );
 
 
