@@ -1,6 +1,6 @@
 clear;
 
-data3d = load("data1.txt");
+data3d = load("highspeed.txt");
 
 x = data3d( :, 1 );
 y = data3d( :, 2 );
@@ -23,7 +23,7 @@ print -depsc 81po.eps;
 % 50ms
 Fs = 20;
 %order = 256;
-order = 3;
+order = 6;
 
 data_1d_t = x + y + z;
 
@@ -38,15 +38,20 @@ endfor
 
 %save -text data_1d.tsv data_1d;
 
+%-----------------------------------------------------------
 
 %t = linspace( 0, 100, length(data_1d) );
 
 plot( data_1d );
-axis( [ 10, 50 ] );
+
+figure_start_x = 300;
+figure_end_x = 400;
+axis( [ figure_start_x, figure_end_x ] );
 grid;
 
 print -depsc data_1d.eps;
 
+%-----------------------------------------------------------
 
 lpf = ones( 1, dataSize - order );
 
@@ -60,16 +65,25 @@ for( i = 1 : dataSize - order )
 	i++;
 endfor
 
-t = linspace( 0, 100, length( lpf ) );
+
+%-----------------------------------------------------------
+
+%t = linspace( 0, 100, length( lpf ) );
 
 plot( lpf );
-axis( [ 10, 50 ] );
+axis( [ figure_start_x, figure_end_x ] );
 grid;
-
+print -depsc data_1d_lpf.eps;
 
 %save -text data_1d_lpf.tsv lpf;
 
-print -depsc data_1d_lpf.eps;
+
+plot( lpf );
+axis( [ 300,400] );
+grid;
+print -depsc data_1d_lpf_100.eps;
+
+%-----------------------------------------------------------
 
 lpf_fft = abs( fft( lpf ) );
 ampMax = max( lpf_fft );
