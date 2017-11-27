@@ -57,17 +57,19 @@ for( i = 1 : dataSize - order )
 	i++;
 endfor
 
-t = linspace( 0, 100, length( lpf ) );
+%t = linspace( 0, 100, length( lpf ) );
+%plot( t, lpf );
+
+plot( lpf );
+axis( [ 0,10 ] );
 
 
 %save -text data_1d_lpf.tsv lpf;
-plot( t, lpf );
 
 print -depsc data_1d_lpf.eps;
+
 lpf_fft = abs( fft( lpf ) );
-
 ampMax = max( lpf_fft );
-
 
 t = linspace( 0, 20, length( lpf_fft ) );
 plot( t, 20 * log10( lpf_fft / ampMax ) );
